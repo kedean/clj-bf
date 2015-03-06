@@ -1,36 +1,18 @@
-# clj-brainfuck
+# Clojure Brainfuck
 
-FIXME: description
-
-## Installation
-
-Download from http://example.com/FIXME.
+A small interpreter written in Clojure for the toy language [https://en.wikipedia.org/wiki/Brainfuck](Brainfuck).
 
 ## Usage
 
-FIXME: explanation
-
-    $ java -jar clj-brainfuck-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
+    $ lein run [filename]
 
 ## Examples
 
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+A helloworld.bf example is provided in resources. This prints the string "Hello World!".
 
 ## License
 
-Copyright © 2015 FIXME
+Copyright © 2015
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.

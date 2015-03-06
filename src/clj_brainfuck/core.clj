@@ -12,7 +12,7 @@
     ]
     (cond
       (= unmatched-bracket-count 0)
-      position
+      (dec position)
       (= \] (get sequence position)) ;found match
       (recur (inc position) (dec unmatched-bracket-count))
       (= \[ (get sequence position)) ;new unmatched
@@ -24,14 +24,14 @@
   )
 
 (defn prev-matching-bracket [init-position sequence]
-  (loop
+    (loop
     [
       position (dec init-position)
       unmatched-bracket-count 1
     ]
     (cond
       (= unmatched-bracket-count 0)
-      position
+      (inc position)
       (= \[ (get sequence position)) ;found match
       (recur (dec position) (dec unmatched-bracket-count))
       (= \] (get sequence position)) ;new unmatched
@@ -62,6 +62,7 @@
 (defmethod parse-token \. [current-token tokens memory-pointer instruction-pointer]
   (do
     (print (char (aget memory memory-pointer)))
+    (flush)
     [memory-pointer (inc instruction-pointer)]
     ))
 (defmethod parse-token \, [current-token tokens memory-pointer instruction-pointer]
@@ -78,10 +79,10 @@
     (= 0 (aget memory memory-pointer))
     [
       memory-pointer
-      (next-matching-bracket
+      (inc (next-matching-bracket
         instruction-pointer
         tokens
-        )
+        ))
       ]
     [memory-pointer (inc instruction-pointer)]
     )
@@ -91,10 +92,10 @@
     (not (= 0 (aget memory memory-pointer)))
     [
       memory-pointer
-      (prev-matching-bracket
+      (inc (prev-matching-bracket
         instruction-pointer
         tokens
-        )
+        ))
       ]
     [memory-pointer (inc instruction-pointer)]
     )
