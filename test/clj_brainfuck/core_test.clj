@@ -2,6 +2,6 @@
   (:require [clojure.test :refer :all]
             [clj-brainfuck.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest helloworld-test
+  (testing "The hello world program runs"
+    (run-brainfuck "resources/helloworld.bf")))
